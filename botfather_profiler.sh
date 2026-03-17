@@ -14,7 +14,7 @@ SLEEP_DURATION=${1:-10}
 echo "Ghi flamegraph cho botfather (PID: $BOTFATHER_PID) trong $SLEEP_DURATION giây..."
 
 # Ghi dữ liệu perf
-sudo perf record -g --call-graph=dwarf -p $BOTFATHER_PID -- sleep $SLEEP_DURATION
+sudo perf record -F 99 -g --call-graph=dwarf -p $BOTFATHER_PID -- sleep $SLEEP_DURATION
 
 # Tạo flamegraph
 sudo perf script > out.perf
